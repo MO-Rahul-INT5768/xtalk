@@ -54,7 +54,7 @@ This demo runs on 4090 cluster with 8-bit quantized *SenseVoice* as speech recog
 <table class="center">
 <tr>
     <td width=50% style="border: none">
-        <video controls autoplay loop src="https://github.com/user-attachments/assets/e7946357-cd83-493c-8967-354cf87b2acb" muted="false"></video>
+        <video controls autoplay loop src="https://github.com/user-attachments/assets/8db97785-a990-4747-b9c2-c45905ac0ef5" muted="false"></video>
     </td>
     <td width=50% style="border: none">
         <video controls autoplay loop src="https://github.com/user-attachments/assets/ca45c463-6738-4b5c-8305-71fce4ab490e" muted="false"></video>
