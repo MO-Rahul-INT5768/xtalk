@@ -65,23 +65,23 @@ This demo runs on 4090 cluster with 8-bit quantized *SenseVoice* as speech recog
         <video controls autoplay loop src="https://github.com/user-attachments/assets/793ee442-32bd-46ea-8319-39b86288c5fe" muted="false"></video>
     </td>
     <td width=50% style="border: none">
-        <video controls autoplay loop src="[https://github.com/user-attachments/assets/d8fc4d15-edfb-4476-a9d3-983a1ce9be0e](https://github.com/user-attachments/assets/9f05b28f-5dc0-4ce6-b8be-ec59dace4867)" muted="false"></video>
+        <video controls autoplay loop src="https://github.com/user-attachments/assets/6cdd60c2-d192-4883-9865-196e5bc0bb1d" muted="false"></video>
     </td>
 </tr>
 <tr>
     <td width=50% style="border: none">
-        <video controls autoplay loop src="https://github.com/user-attachments/assets/7ea4dc44-d43c-45ca-8788-2032b3a387d8" muted="false"></video>
+        <video controls autoplay loop src="https://github.com/user-attachments/assets/570cac89-cfd0-4073-9575-783f74420b42" muted="false"></video>
     </td>
     <td width=50% style="border: none">
-        <video controls autoplay loop src="https://github.com/user-attachments/assets/9f296d5e-a752-435e-91a2-a9f1a71f9fac" muted="false"></video>
+        <video controls autoplay loop src="https://github.com/user-attachments/assets/b366c4ea-b1a6-41fd-8bba-3db184c4297b" muted="false"></video>
     </td>
 </tr>
 <tr>
     <td width=50% style="border: none">
-        <video controls autoplay loop src="https://github.com/user-attachments/assets/2b44f2f1-93c4-47b8-99e0-830338cdba02" muted="false"></video>
+        <video controls autoplay loop src="https://github.com/user-attachments/assets/917ac610-efd6-4787-8f5b-5b18d7c248f3" muted="false"></video>
     </td>
     <td width=50% style="border: none">
-        <video controls autoplay loop src="https://github.com/user-attachments/assets/c4cd4c1b-c4fd-493b-8cb2-347c48ac5809" muted="false"></video>
+        <video controls autoplay loop src="https://github.com/user-attachments/assets/9dd89902-e6d1-4f6c-ba17-6441b0b48a74" muted="false"></video>
     </td>
 </tr>
 <tr>
@@ -89,7 +89,7 @@ This demo runs on 4090 cluster with 8-bit quantized *SenseVoice* as speech recog
         <video controls autoplay loop src="https://github.com/user-attachments/assets/d33ca5ef-c722-45a6-93df-2fdb7ffcc729" muted="false"></video>
     </td>
     <td width=50% style="border: none">
-        <video controls autoplay loop src="https://github.com/user-attachments/assets/09370641-7a26-4f93-9c98-dee887612fda" muted="false"></video>
+        <video controls autoplay loop src="https://github.com/user-attachments/assets/50261970-e03c-47a9-8f2d-a3fa186b2ac3" muted="false"></video>
     </td>
 </tr>
 </table>
