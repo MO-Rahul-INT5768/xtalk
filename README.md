@@ -86,7 +86,7 @@ This demo runs on 4090 cluster with 8-bit quantized *SenseVoice* as speech recog
 </tr>
 <tr>
     <td width=50% style="border: none">
-        <video controls autoplay loop src="https://github.com/user-attachments/assets/d33ca5ef-c722-45a6-93df-2fdb7ffcc729" muted="false"></video>
+        <video controls autoplay loop src="https://github.com/user-attachments/assets/edd9be47-ecbb-41e8-abc4-dccb67166ac3" muted="false"></video>
     </td>
     <td width=50% style="border: none">
         <video controls autoplay loop src="https://github.com/user-attachments/assets/50261970-e03c-47a9-8f2d-a3fa186b2ac3" muted="false"></video>
