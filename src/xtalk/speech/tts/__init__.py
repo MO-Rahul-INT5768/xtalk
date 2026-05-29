@@ -62,3 +62,19 @@ try:
     __all__.append("GPTSoVITS")
 except:
     pass
+
+# XTTS-v2 Local
+try:
+    from .xtts_v2_local import XTTSv2Local as XTTSv2Local
+
+    __all__.append("XTTSv2Local")
+except:
+    pass
+
+# Hugging Face VITS Local
+try:
+    from .hf_vits_local import HFVitsLocal as HFVitsLocal
+
+    __all__.append("HFVitsLocal")
+except:
+    pass

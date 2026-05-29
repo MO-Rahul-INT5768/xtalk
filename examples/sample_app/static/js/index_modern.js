@@ -441,7 +441,7 @@ function syncVoiceSelectValue(targetName) {
 }
 async function loadReferenceAudios() {
     try {
-        const resp = await fetch('/api/voices');
+        const resp = await fetch('./api/voices');
         const data = await resp.json();
         availableAudios = data.audios || [];
         $voiceSelect.innerHTML = '<option value="" selected disabled hidden></option>';
@@ -482,7 +482,7 @@ $speedSelect?.addEventListener('change', (e) => {
 let availableTTSModels = [];
 async function loadTTSModels() {
     try {
-        const response = await fetch('/api/available-tts-models');
+        const response = await fetch('./api/available-tts-models');
         const data = await response.json();
         availableTTSModels = data.models || [];
 
@@ -515,7 +515,7 @@ async function loadTTSModels() {
 let availableLLMModels = [];
 async function loadLLMModels() {
     try {
-        const response = await fetch('/api/available-llm-models');
+        const response = await fetch('./api/available-llm-models');
         const data = await response.json();
         availableLLMModels = data.models || [];
 

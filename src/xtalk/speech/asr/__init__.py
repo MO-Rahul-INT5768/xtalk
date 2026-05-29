@@ -56,6 +56,14 @@ try:
 except:
     pass
 
+# faster-whisper Local (CTranslate2 Whisper)
+try:
+    from .faster_whisper_local import FasterWhisperLocal as FasterWhisperLocal
+
+    __all__.append("FasterWhisperLocal")
+except:
+    pass
+
 # EasyTurn (non-streaming)
 try:
     from .easy_turn.easy_turn import EasyTurnASR as EasyTurnASR

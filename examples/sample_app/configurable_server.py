@@ -90,6 +90,28 @@ async def get_reference_audios():
     return JSONResponse(content={"audios": voices})
 
 
+@app.get("/api/available-tts-models")
+async def get_available_tts_models():
+    with open(args.config, "r", encoding="utf-8") as f:
+        config = json.load(f)
+    tts_cfg = config.get("tts", {})
+    model_type = tts_cfg.get("type", "")
+    model_params = tts_cfg.get("params", {})
+    display_name = model_params.get("model", model_type) or model_type
+    return JSONResponse(content={"models": [{"type": model_type, "name": display_name, "config": model_params}]})
+
+
+@app.get("/api/available-llm-models")
+async def get_available_llm_models():
+    with open(args.config, "r", encoding="utf-8") as f:
+        config = json.load(f)
+    llm_cfg = config.get("llm_agent", {}).get("params", {}).get("model", {})
+    model_name = llm_cfg.get("model", "")
+    base_url = llm_cfg.get("base_url", "")
+    api_key = llm_cfg.get("api_key", "")
+    return JSONResponse(content={"models": [{"model": model_name, "display_name": model_name, "base_url": base_url, "api_key": api_key}]})
+
+
 if __name__ == "__main__":
     import uvicorn
 

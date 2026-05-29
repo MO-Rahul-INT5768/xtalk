@@ -850,6 +850,16 @@ A high-performance speech recognition framework and beyond.
 [API Reference](https://elevenlabs.io/docs/api-reference/speech-to-text/convert)
     
 </details>
+
+<details>
+<summary>FasterWhisperLocal</summary>
+
+**Dependency:** `pip install "xtalk[faster-whisper-local] @ git+https://github.com/xcc-zach/xtalk.git@main"`
+**Path:** `src/xtalk/speech/asr/faster_whisper_local.py`
+
+Use a local [faster-whisper](https://github.com/SYSTRAN/faster-whisper) / CTranslate2 Whisper checkpoint by passing the local model path in `params.model`.
+
+</details>
     
 ### Text to Speech
     
@@ -903,6 +913,26 @@ A high-performance speech recognition framework and beyond.
     
 [API Reference](https://elevenlabs.io/docs/api-reference/text-to-speech/convert)
     
+</details>
+
+<details>
+<summary>XTTSv2Local</summary>
+
+**Dependency:** `pip install "xtalk[xtts-v2-local] @ git+https://github.com/xcc-zach/xtalk.git@main"`
+**Path:** `src/xtalk/speech/tts/xtts_v2_local.py`
+
+Use a local XTTS-v2 checkpoint by passing `model_path` and an example `speaker_wav` in config. The output is resampled to the 48 kHz PCM format expected by the frontend.
+
+</details>
+
+<details>
+<summary>HFVitsLocal</summary>
+
+**Dependency:** `pip install "xtalk[hf-vits-local] @ git+https://github.com/xcc-zach/xtalk.git@main"`
+**Path:** `src/xtalk/speech/tts/hf_vits_local.py`
+
+Use a local or Hugging Face VITS checkpoint such as MMS TTS models by passing the model path or repo id in `params.model`.
+
 </details>
 
 ### Voice Activity Detection

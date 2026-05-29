@@ -81,6 +81,19 @@ sense-voice-small = [
   "huggingface_hub",
   "modelscope"
 ]
+faster-whisper-local = [
+  "faster-whisper"
+]
+xtts-v2-local = [
+  "TTS",
+  "soundfile",
+  "soxr"
+]
+hf-vits-local = [
+  "torch",
+  "transformers",
+  "soxr"
+]
 sherpa-onnx-asr = [
   "websockets",
 ]
