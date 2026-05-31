@@ -124,6 +124,7 @@ class OutputGateway(EventListenerMixin):
 
     async def _send_binary(self, data: bytes) -> None:
         """Send raw binary data (e.g., audio chunks)."""
+        print(f"[DEBUG TTS] Sending {len(data)} bytes binary, session={self.session_id[:8]}", flush=True)
         try:
             # Ensure the socket is still open
             if (

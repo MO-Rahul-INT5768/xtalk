@@ -35,6 +35,8 @@ class FasterWhisperLocal(ASR):
         condition_on_previous_text: bool = False,
         vad_filter: bool = False,
         word_timestamps: bool = False,
+        log_prob_threshold: float = -1.5,
+        no_speech_prob_threshold: float = 0.8,
         mock_window_size: int = 4,
         mock_trigger_interval_sec: float = 1.6,
         cpu_threads: int = 4,
@@ -56,6 +58,8 @@ class FasterWhisperLocal(ASR):
         self.condition_on_previous_text = bool(condition_on_previous_text)
         self.vad_filter = bool(vad_filter)
         self.word_timestamps = bool(word_timestamps)
+        self.log_prob_threshold = float(log_prob_threshold)
+        self.no_speech_threshold = float(no_speech_prob_threshold)
         self.cpu_threads = int(cpu_threads)
         self.num_workers = int(num_workers)
         self.extra_kwargs: Dict[str, Any] = dict(kwargs)
@@ -85,9 +89,18 @@ class FasterWhisperLocal(ASR):
         if not audio:
             return ""
         pcm = self._pcm_to_float(audio)
+        max_amp = abs(pcm).max()
+        print(f"[DEBUG Whisper] transcribing {len(audio)}B audio, max_amp={max_amp:.3f}", flush=True)
+        # Save first audio sample for inspection
+        import os
+        sample_path = "/tmp/whisper_debug_audio.raw"
+        if not os.path.exists(sample_path):
+            with open(sample_path, "wb") as f:
+                f.write(audio)
+            print(f"[DEBUG Whisper] saved sample to {sample_path}", flush=True)
         try:
             with self._lock:
-                segments, _ = self.model.transcribe(
+                segments, info = self.model.transcribe(
                     pcm,
                     language=self.language,
                     beam_size=self.beam_size,
@@ -96,10 +109,16 @@ class FasterWhisperLocal(ASR):
                     condition_on_previous_text=self.condition_on_previous_text,
                     vad_filter=self.vad_filter,
                     word_timestamps=self.word_timestamps,
-                    without_timestamps=True,
+                    log_prob_threshold=self.log_prob_threshold,
+                    no_speech_threshold=self.no_speech_threshold,
                     task="transcribe",
                 )
-                text = "".join(segment.text for segment in segments).strip()
+                seg_list = list(segments)
+                text = "".join(seg.text for seg in seg_list).strip()
+                if not text and seg_list:
+                    for s in seg_list:
+                        print(f"[DEBUG Whisper] filtered seg: {repr(s.text)} logprob={s.avg_logprob:.3f} nsp={s.no_speech_prob:.3f}", flush=True)
+            print(f"[DEBUG Whisper] result='{text}', lang={info.language}", flush=True)
             return text
         except Exception as e:
             raise RuntimeError(f"faster-whisper recognize failed: {e}")
@@ -107,7 +126,10 @@ class FasterWhisperLocal(ASR):
     def recognize_stream(self, audio: bytes, *, is_final: bool = False) -> str:
         if not audio:
             return self._mock_recognizer.recognized_text
-        return self._mock_recognizer.recognize(audio, is_final=is_final)
+        result = self._mock_recognizer.recognize(audio, is_final=is_final)
+        if is_final:
+            self._mock_recognizer.reset()
+        return result
 
     def stream_chunk_bytes_hint(self) -> int | None:
         return 25600
@@ -127,6 +149,8 @@ class FasterWhisperLocal(ASR):
             condition_on_previous_text=self.condition_on_previous_text,
             vad_filter=self.vad_filter,
             word_timestamps=self.word_timestamps,
+            log_prob_threshold=self.log_prob_threshold,
+            no_speech_prob_threshold=self.no_speech_threshold,
             _shared_model=self.model,
             _shared_lock=self._lock,
             **self.extra_kwargs,

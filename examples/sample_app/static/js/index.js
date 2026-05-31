@@ -17,6 +17,10 @@ function getWebSocketURL() {
     return wsPath
 }
 
+function getApiURL(path) {
+    return new URL(path, window.location.href).toString();
+}
+
 const convo = createConversation(getWebSocketURL());
 
 const $btnToggle = document.getElementById('btn-toggle');
@@ -65,7 +69,7 @@ function syncVoiceSelectValue(targetName) {
 }
 async function loadReferenceAudios() {
     try {
-        const response = await fetch('./api/voices');
+        const response = await fetch(getApiURL('./api/voices'));
         const data = await response.json();
         availableAudios = data.audios || [];
 
@@ -107,7 +111,7 @@ $voiceSelect.addEventListener('change', (e) => {
 let availableTTSModels = [];
 async function loadTTSModels() {
     try {
-        const response = await fetch('./api/available-tts-models');
+        const response = await fetch(getApiURL('./api/available-tts-models'));
         const data = await response.json();
         availableTTSModels = data.models || [];
 
@@ -139,7 +143,7 @@ async function loadTTSModels() {
 let availableLLMModels = [];
 async function loadLLMModels() {
     try {
-        const response = await fetch('./api/available-llm-models');
+        const response = await fetch(getApiURL('./api/available-llm-models'));
         const data = await response.json();
         availableLLMModels = data.models || [];
 

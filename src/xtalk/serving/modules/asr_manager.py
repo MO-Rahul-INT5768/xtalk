@@ -383,6 +383,7 @@ class ASRManager(Manager):
         # Placeholder confidence (model may override later)
         final_confidence = 0
         final_text = self.accumulated_text.strip()
+        print(f"[DEBUG ASR] final_text='{final_text}', session={self.session_id[:8]}", flush=True)
 
         if not final_text:
             return
@@ -555,6 +556,7 @@ class ASRManager(Manager):
             current_text: str = await self.asr_model.async_recognize_stream(
                 audio_data, is_final=is_final
             )
+            print(f"[DEBUG ASR] recognize_stream -> '{current_text}', audio={len(audio_data)}B, is_final={is_final}", flush=True)
             self.consumer_state.last_activity = time.time()
             # Only accumulate processed seconds when actual audio arrives
             if audio_data:

@@ -11,10 +11,18 @@ import mimetypes
 mimetypes.add_type("application/javascript", ".js")
 mimetypes.add_type("application/javascript", ".mjs")
 mimetypes.add_type("text/css", ".css")
+import logging
 from xtalk import Xtalk
 from xtalk.log_utils import mute_other_logging
 
 mute_other_logging()
+# Add dedicated DEBUG file handler directly to xtalk logger
+_xtalk_logger = logging.getLogger("xtalk")
+_xtalk_logger.setLevel(logging.DEBUG)
+_debug_handler = logging.FileHandler("/home/sagemaker-user/xtalk/logs/xtalk_pipeline_debug.log")
+_debug_handler.setLevel(logging.DEBUG)
+_debug_handler.setFormatter(logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s"))
+_xtalk_logger.addHandler(_debug_handler)
 
 parser = argparse.ArgumentParser(description="Configurable Xtalk Server")
 parser.add_argument("--config", type=str, help="Path to the server configuration file")
