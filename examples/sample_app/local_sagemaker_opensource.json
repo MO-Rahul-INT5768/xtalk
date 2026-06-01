@@ -25,6 +25,16 @@
       }
     }
   },
+  "thought_rewriter": {
+    "type": "DefaultThoughtRewriter",
+    "params": {
+      "model": {
+        "model": "/home/sagemaker-user/model-store/stimm/llm/Qwen2.5-7B-Instruct-AWQ",
+        "base_url": "http://127.0.0.1:8000/v1",
+        "api_key": "none"
+      }
+    }
+  },
   "tts": {
     "type": "HFVitsLocal",
     "params": {
